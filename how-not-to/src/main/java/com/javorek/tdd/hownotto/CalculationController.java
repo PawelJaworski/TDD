@@ -2,6 +2,8 @@ package com.javorek.tdd.hownotto;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -9,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalculationController {
     private final CalculationService service;
 
-    @GetMapping
-    int calculate(int first, String operation, int second) {
-        return service.calculate(first, operation, second);
+    @PostMapping
+    int calculate(@RequestBody CalculationCmd cmd) {
+        return service.calculate(cmd);
     }
 }
