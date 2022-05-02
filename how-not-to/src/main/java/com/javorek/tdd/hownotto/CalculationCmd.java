@@ -14,14 +14,14 @@ public class CalculationCmd {
     public static class Builder {
 
         public Builder plus(int second) {
-            operation = "+";
+            operation = "additamentum";
             this.second = second;
 
             return this;
         }
 
         public Builder minus(int second) {
-            operation = "-";
+            operation = "detractio";
             this.second = second;
 
             return this;

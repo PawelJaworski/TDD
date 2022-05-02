@@ -16,10 +16,10 @@ public class CalculationService {
         validator.validate(first, second);
         final int result;
         switch (operation) {
-            case "+":
+            case "additamentum":
                 result = first + second;
                 break;
-            case "-":
+            case "detractio":
                 result = first - second;
                 break;
             default:
