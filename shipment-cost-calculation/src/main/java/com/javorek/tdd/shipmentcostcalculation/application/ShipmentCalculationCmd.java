@@ -1,9 +1,11 @@
 package com.javorek.tdd.shipmentcostcalculation.application;
 
 import lombok.Builder;
+import lombok.Singular;
 import lombok.Value;
 
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.Optional;
 
 @Value
@@ -14,4 +16,6 @@ public class ShipmentCalculationCmd {
     BigDecimal routeLength;
     BigDecimal fuelPriceForOneLiter;
     BigDecimal fuelConsumptionByCar;
+    @Singular
+    Map<String, BigDecimal> additionalCosts;
 }

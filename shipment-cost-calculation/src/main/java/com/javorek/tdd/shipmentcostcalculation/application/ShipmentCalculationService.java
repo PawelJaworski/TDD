@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.List;
 
 @RequiredArgsConstructor
 public class ShipmentCalculationService {
@@ -14,14 +13,23 @@ public class ShipmentCalculationService {
     private final ShipmentCostMapper mapper;
 
     public void saveCalculation(ShipmentCalculationCmd shipmentCalculationCmd) {
-        var shipmentId = shipmentCalculationCmd.getShipmentId()
-                .get();
-        BigDecimal cost = calculateShipmentCost(shipmentCalculationCmd);
-        var shipmentCost = new ShipmentCost(shipmentId, cost);
+
+        var shipmentCost = calculateShipmentCost(shipmentCalculationCmd);
         shipmentCostRepository.save(shipmentCost);
     }
 
-    public BigDecimal calculateShipmentCost(ShipmentCalculationCmd shipmentCalculationCmd) {
+    public ShipmentCost calculateShipmentCost(ShipmentCalculationCmd shipmentCalculationCmd) {
+        var shipmentId = shipmentCalculationCmd.getShipmentId()
+                .get();
+        BigDecimal fuelCost = calculateFuelCost(shipmentCalculationCmd);
+        return ShipmentCost.builder()
+                .shipmentId(shipmentId)
+                .fuelCost(fuelCost)
+                .additionalCosts(shipmentCalculationCmd.getAdditionalCosts())
+                .build();
+    }
+
+    private  BigDecimal calculateFuelCost(ShipmentCalculationCmd shipmentCalculationCmd) {
         return shipmentCalculationCmd.getFuelConsumptionByCar()
                 .divide(new BigDecimal("100"))
                 .multiply(shipmentCalculationCmd.getRouteLength())
