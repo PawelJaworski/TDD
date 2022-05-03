@@ -1,5 +1,6 @@
 package com.javorek.tdd.shipmentcostcalculation.application;
 
+import com.javorek.tdd.shipmentcostcalculation.domain.AdditionalCost;
 import com.javorek.tdd.shipmentcostcalculation.domain.ShipmentCost;
 import com.javorek.tdd.shipmentcostcalculation.domain.ShipmentCostRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,14 +19,15 @@ public class ShipmentCalculationService {
         shipmentCostRepository.save(shipmentCost);
     }
 
-    public ShipmentCost calculateShipmentCost(ShipmentCalculationCmd shipmentCalculationCmd) {
-        var shipmentId = shipmentCalculationCmd.getShipmentId()
+    public ShipmentCost calculateShipmentCost(ShipmentCalculationCmd cmd) {
+        var shipmentId = cmd.getShipmentId()
                 .get();
-        BigDecimal fuelCost = calculateFuelCost(shipmentCalculationCmd);
+        BigDecimal fuelCost = calculateFuelCost(cmd);
         return ShipmentCost.builder()
                 .shipmentId(shipmentId)
                 .fuelCost(fuelCost)
-                .additionalCosts(shipmentCalculationCmd.getAdditionalCosts())
+                .additionalCost(
+                        new AdditionalCost(cmd.getAdditionalCostType(), cmd.getAdditionalCostAmount()))
                 .build();
     }
 

@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Optional;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -12,10 +13,11 @@ import java.util.Map;
 public class ShipmentCost {
     private String shipmentId;
     private BigDecimal fuelCost;
-    private Map<String, BigDecimal> additionalCosts;
+    private AdditionalCost additionalCost;
     public BigDecimal getAsMoney() {
-        return additionalCosts.values().stream()
-                .reduce(BigDecimal.ZERO, BigDecimal::add)
+        return Optional.ofNullable(additionalCost)
+                .map(AdditionalCost::getAmount)
+                .orElse(BigDecimal.ZERO)
                 .add(fuelCost);
     }
 }

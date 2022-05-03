@@ -1,5 +1,6 @@
 package com.javorek.tdd.shipmentcostcalculation.application;
 
+import com.javorek.tdd.shipmentcostcalculation.domain.AdditionalCost;
 import com.javorek.tdd.shipmentcostcalculation.domain.ShipmentCostRepository;
 import com.javorek.tdd.shipmentcostcalculation.infrastructure.ShipmentCalculationInMemoryRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -56,7 +57,8 @@ public class ShipmentCostCalculationTest {
                 .fuelConsumptionByCar(TestCases.FUEL_CONSUMPTION_BY_CAR)
                 .routeLength(TestCases.BIA_WAW_ROUTE_LENGTH)
                 .fuelPriceForOneLiter(TestCases.FUEL_PRICE_FOR_ONE_LITER)
-                .additionalCost(TestCases.HIGHWAY, TestCases.HIGHWAY_COST)
+                .additionalCostType(TestCases.HIGHWAY)
+                .additionalCostAmount(TestCases.HIGHWAY_COST)
                 .build();
         shipmentCalculationService.saveCalculation(shipmentCalculationCmd);
         // then

@@ -16,6 +16,6 @@ public class ShipmentCalculationCmd {
     BigDecimal routeLength;
     BigDecimal fuelPriceForOneLiter;
     BigDecimal fuelConsumptionByCar;
-    @Singular
-    Map<String, BigDecimal> additionalCosts;
+    String additionalCostType;
+    BigDecimal additionalCostAmount;
 }
