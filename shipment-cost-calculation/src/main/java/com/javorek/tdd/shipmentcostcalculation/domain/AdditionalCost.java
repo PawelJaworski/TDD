@@ -7,5 +7,5 @@ import java.math.BigDecimal;
 @Value
 public class AdditionalCost {
     String type;
-    BigDecimal amount;
+    Money amount;
 }

@@ -12,12 +12,13 @@ import java.util.Optional;
 @Getter
 public class ShipmentCost {
     private String shipmentId;
-    private BigDecimal fuelCost;
+    private Money fuelCost;
     private AdditionalCost additionalCost;
     public BigDecimal getAsMoney() {
         return Optional.ofNullable(additionalCost)
                 .map(AdditionalCost::getAmount)
-                .orElse(BigDecimal.ZERO)
-                .add(fuelCost);
+                .orElse(Money.ZERO)
+                .add(fuelCost)
+                .getAsBigDecimal();
     }
 }

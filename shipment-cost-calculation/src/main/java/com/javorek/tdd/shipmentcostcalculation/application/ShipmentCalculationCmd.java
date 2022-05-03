@@ -17,5 +17,6 @@ public class ShipmentCalculationCmd {
     BigDecimal fuelPriceForOneLiter;
     BigDecimal fuelConsumptionByCar;
     String additionalCostType;
-    BigDecimal additionalCostAmount;
+    @Builder.Default
+    BigDecimal additionalCostAmount = BigDecimal.ZERO;
 }

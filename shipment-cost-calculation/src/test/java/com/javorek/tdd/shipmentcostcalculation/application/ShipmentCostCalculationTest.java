@@ -29,9 +29,10 @@ public class ShipmentCostCalculationTest {
                 .routeLength(TestCases.BIA_WAW_ROUTE_LENGTH)
                 .fuelPriceForOneLiter(TestCases.FUEL_PRICE_FOR_ONE_LITER)
                 .build();
-        var shipmentCost = shipmentCalculationService.calculateShipmentCost(shipmentCalculationCmd);
+        var shipmentCost = shipmentCalculationService.calculateShipmentCost(shipmentCalculationCmd)
+                .getAsMoney();
         // then
-        assertEquals(TestCases.FUEL_PRICE_FOR_BIA_WAW_ROUTE, shipmentCost.getFuelCost());
+        assertEquals(TestCases.FUEL_PRICE_FOR_BIA_WAW_ROUTE, shipmentCost);
     }
 
     @Test
