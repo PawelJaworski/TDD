@@ -12,8 +12,6 @@ public class ShipmentCostCalculationTest {
 
     @BeforeEach
     void beforeEach() {
-       shipmentCalculationService = new ShipmentCalculationService();
+       shipmentCalculationService = new ShipmentCalculationService(new ShipmentCostMapperImpl());
     }
-
-   
 }
