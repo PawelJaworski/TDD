@@ -1,7 +1,5 @@
 package com.javorek.util;
 
-import com.javorek.tdd.shipmentcostcalculation.domain.ShipmentCost;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

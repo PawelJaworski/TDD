@@ -1,4 +1,4 @@
-package com.javorek.tdd.shipmentcostcalculation.domain;
+package com.javorek.util;
 
 import lombok.Value;
 
