@@ -2,24 +2,15 @@ package com.javorek.tdd.shipmentcostcalculation.infrastructure;
 
 import com.javorek.tdd.shipmentcostcalculation.domain.ShipmentCost;
 import com.javorek.tdd.shipmentcostcalculation.domain.ShipmentCostRepository;
+import com.javorek.util.AbstractInMemoryRepository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
-public class ShipmentCalculationInMemoryRepository implements ShipmentCostRepository {
-    private Map<String, ShipmentCost> shipmentCostByShipmentId = new HashMap<>();
+public class ShipmentCalculationInMemoryRepository extends AbstractInMemoryRepository<String, ShipmentCost>
+        implements ShipmentCostRepository {
 
     @Override
-    public ShipmentCost save(ShipmentCost shipmentCost) {
-        return shipmentCostByShipmentId.put(shipmentCost.getShipmentId(), shipmentCost);
-    }
-
-    @Override
-    public Optional<ShipmentCost> findOne(String shipmentId) {
-        return shipmentCostByShipmentId.values().stream()
-                .filter(it -> it.getShipmentId().equals(shipmentId))
-                .findFirst();
+    protected Function<ShipmentCost, String> getId() {
+        return shipmentCost -> shipmentCost.getShipmentId();
     }
 }
