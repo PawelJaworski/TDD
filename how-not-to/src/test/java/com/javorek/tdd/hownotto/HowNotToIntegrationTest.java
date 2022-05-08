@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-class HowNotToApplicationTests {
+class HowNotToIntegrationTest {
 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
@@ -40,23 +40,4 @@ class HowNotToApplicationTests {
 				.andExpect(content().string("3"))
 				.andReturn();
 	}
-
-	@Test
-	@SneakyThrows
-	void validate() {
-		var json = "{\"first\":-1,\"operation\":\"additamentum\",\"second\":0}";
-		this.mockMvc.perform(post("/")
-						.contentType(MediaType.APPLICATION_JSON)
-						.content(json)
-						.characterEncoding("utf-8"))
-				.andDo(print())
-				.andExpect(status().isBadRequest())
-				.andReturn();
-	}
-
-//	@ExceptionHandler(ValidationException.class)
-//	public ResponseEntity handleError(HttpServletRequest req, Exception ex) {
-//
-//		return ResponseEntity.badRequest().build();
-//	}
 }
