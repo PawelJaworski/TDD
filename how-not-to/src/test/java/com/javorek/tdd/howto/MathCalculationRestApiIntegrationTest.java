@@ -13,11 +13,10 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = HowNotToApplication.class)
-class HowToIntegrationTest {
+class MathCalculationRestApiIntegrationTest {
 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
