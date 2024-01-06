@@ -1,5 +1,10 @@
-# Math for kids
+# Mission to Mars
 ## Functional requirements:
-* User can add/subtract 2 integers > 0 and <= 9
-* When result of calculation < 0 then raise error message ‘You cannot subtract greater number from smaller one’
+1. Astronaut canditate is found and is ready
+* passed astronaut aptitude test 
+* accepted space travel agreements
+
+2. Spaceship is ready
+* prepared for start
+* tanked up
 
