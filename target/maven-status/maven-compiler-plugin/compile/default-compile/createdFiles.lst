@@ -1,0 +1,10 @@
+pl/javorek/tdd/traveltomars/application/command/TravelToMarsFacade$TravelToMarsFacadeBuilder.class
+pl/javorek/tdd/traveltomars/application/command/persistence/TravelToMars.class
+pl/javorek/tdd/traveltomars/application/command/persistence/TravelToMarsJpaRepository.class
+pl/javorek/tdd/traveltomars/eventstream/inbound/contract/AstronautAptitudeTestPassedEvent.class
+pl/javorek/tdd/DemoApplication.class
+pl/javorek/tdd/traveltomars/application/command/persistence/TravelToMarsRepository.class
+pl/javorek/tdd/traveltomars/eventstream/inbound/contract/SpaceTravelAgreementsAcceptedEvent.class
+pl/javorek/tdd/traveltomars/eventstream/inbound/AstronautCandidateEventListener.class
+pl/javorek/tdd/traveltomars/infrastructure/JacksonConfig.class
+pl/javorek/tdd/traveltomars/application/command/TravelToMarsFacade.class

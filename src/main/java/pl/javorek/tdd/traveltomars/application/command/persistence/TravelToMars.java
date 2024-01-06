@@ -2,15 +2,19 @@ package pl.javorek.tdd.traveltomars.application.command.persistence;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.UUID;
 
 @Entity
 @Data
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class TravelToMars {
     @Id
-    private UUID id;
+    private Integer version;
 
-    public TravelToMars() {
-        this.id = UUID.randomUUID();
+    public static TravelToMars planTravel() {
+        return new TravelToMars(1);
+    }
+
+    public TravelToMars(int version) {
+        this.version = version;
     }
 }

@@ -1,0 +1,4 @@
+pl/javorek/tdd/traveltomars/application/persistence/TravelToMarsInMemoryRepository.class
+pl/javorek/tdd/traveltomars/test/TestDataProviderAbility.class
+pl/javorek/tdd/traveltomars/application/command/TravelToMarsFacadeAbility.class
+pl/javorek/tdd/traveltomars/application/persistence/TravelToMarsRepositoryAbility.class

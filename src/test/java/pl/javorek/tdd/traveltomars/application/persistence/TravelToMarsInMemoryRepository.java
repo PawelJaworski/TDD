@@ -6,19 +6,18 @@ import pl.javorek.tdd.traveltomars.application.command.persistence.TravelToMarsR
 import java.util.*;
 
 public class TravelToMarsInMemoryRepository implements TravelToMarsRepository {
-    private final Map<UUID, TravelToMars> data = new HashMap<>();
+    private final Map<Integer, TravelToMars> data = new HashMap<>();
 
     @Override
     public TravelToMars save(TravelToMars entity) {
-        data.put(entity.getId(), entity);
+        data.put(entity.getVersion(), entity);
 
         return entity;
     }
 
     @Override
-    public Optional<TravelToMars> findOneById(UUID id) {
-        return data.values().stream()
-                .filter(it -> it.getId().equals(id))
+    public Optional<TravelToMars> findFirstByOrderByVersionDesc() {
+        return  data.values().stream()
                 .findFirst();
     }
 }

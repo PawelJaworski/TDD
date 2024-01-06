@@ -7,8 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.javorek.tdd.traveltomars.application.command.persistence.TravelToMars;
 import pl.javorek.tdd.traveltomars.application.command.persistence.TravelToMarsRepository;
 
-import java.util.UUID;
-
 @Service
 @Transactional
 @Builder
@@ -16,11 +14,12 @@ import java.util.UUID;
 public class TravelToMarsFacade {
     private final TravelToMarsRepository travelToMarsRepository;
 
-    public UUID onAstronautAptitudeTest(String astronautId) {
-        return travelToMarsRepository
-                .save(new TravelToMars())
-                .getId();
+    public void onAstronautAptitudeTestPassed(String astronautId) {
+        findElseCreate();
     }
 
-
+    private TravelToMars findElseCreate() {
+        return travelToMarsRepository.findFirstByOrderByVersionDesc()
+                .orElseGet(() -> travelToMarsRepository.save(TravelToMars.planTravel()));
+    }
 }

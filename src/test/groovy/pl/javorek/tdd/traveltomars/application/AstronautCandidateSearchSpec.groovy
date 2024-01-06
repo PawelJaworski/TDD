@@ -10,9 +10,9 @@ class AstronautCandidateSearchSpec extends Specification implements TravelToMars
 
     def "When travel to mars preparation started then travel to Mars saved and got unique id."() {
         when:
-        var id = loan_application_submitted()
+        loan_application_submitted()
 
         then:
-        expect_application_for_a_loan_is_saved(id)
+        expect_application_for_a_loan_is_saved()
     }
 }
